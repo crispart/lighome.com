@@ -1,0 +1,29 @@
+{
+  "name": "lighome.com",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Ligreen Jade Portfolio",
+  "author": "Roman Pashnev <crsprt@gmail.com>",
+  "homepage": "https://github.com/crispart/lighome.com#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crispart/lighome.com.git"
+  },
+  "bugs": {
+    "url": "https://github.com/crispart/lighome.com/issues"
+  },
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "devDependencies": {
+    "nuxt": "3.0.0-rc.11",
+    "sass": "^1.55.0"
+  },
+  "dependencies": {
+    "modern-normalize": "^1.1.0"
+  }
+}
