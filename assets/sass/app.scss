@@ -1,0 +1,30 @@
+@use "./fragments/palette";
+@use "./fragments/font";
+@import "./transition";
+
+* {
+  outline: none;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-family: font.$app-family;
+  color: palette.$text-primary-lighten;
+}
+
+html,
+body,
+#__nuxt { height: 100%; }
+
+body { background-color: palette.$app-primary; }
+
+a {
+  text-decoration: none;
+  color: palette.$text-primary-lighten;
+  transition: color 250ms ease;
+
+  &:hover,
+  &.router-link-exact-active { color: palette.$text-primary; }
+}
+
+textarea { resize: none; }
+
+::placeholder { color: palette.$text-primary-lighten; }

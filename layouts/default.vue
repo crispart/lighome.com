@@ -1,26 +1,19 @@
 <template>
   <div class="layout">
-    <header class="layout__header">
-      <TheNavbar />
-    </header>
+    <TheHeader/>
     <main>
-      <slot />
+      <slot/>
     </main>
-    <footer>
-      <TheFooter />
-    </footer>
+    <TheFooter/>
   </div>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss" scoped>
 .layout {
-  display: flex;
-  flex-direction: column;
-
-  &__header {
-    position: sticky;
-    top: 0;
-    backdrop-filter: blur(10px);
-  }
+  display: grid;
+  grid-template-rows: 160px calc(100% - 160px - 160px) 160px;
+  min-height: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
 }
 </style>

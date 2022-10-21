@@ -1,0 +1,29 @@
+/* стиль смены страниц */
+
+.page-enter-active,
+.page-leave-active { transition: opacity 250ms ease, filter 250ms ease; }
+
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+  filter: blur(5px);
+}
+
+/* проявление с поднятием */
+
+.fade-up-enter-active,
+.fade-up-leave-active { transition: opacity 250ms ease, transform 250ms ease; }
+
+.fade-up-enter-from,
+.fade-up-leave-to {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+/* простое проявление */
+
+.fade-enter-active,
+.fade-leave-active { transition: opacity 250ms ease; }
+
+.fade-enter-from,
+.fade-leave-to { opacity: 0; }

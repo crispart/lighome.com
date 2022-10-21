@@ -24,6 +24,7 @@
     "sass": "^1.55.0"
   },
   "dependencies": {
+    "@vueuse/core": "^9.3.1",
     "modern-normalize": "^1.1.0"
   }
 }
