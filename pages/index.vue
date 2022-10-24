@@ -56,10 +56,7 @@ const projects: Array<ProjectInterface> = [
 
   @media screen and (min-width: mq.$phone) { grid-template-columns: repeat(2, 1fr); }
 
-  @media screen and (min-width: mq.$tablet) {
-    grid-template-columns: repeat(2, 1fr);
-    padding: 0 4%;
-  }
+  @media screen and (min-width: mq.$tablet) { padding: 0 4%; }
 
   &__project { width: 100%; }
 }
