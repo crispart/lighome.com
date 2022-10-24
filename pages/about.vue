@@ -87,18 +87,14 @@
 import { reactive, ref } from '@vue/reactivity';
 import { useHead } from '@vueuse/head';
 import FormState from '@/constants/enum/FormState';
-import FormInterface from '@/models/FormInterface';
+import FormModel from '@/models/classes/FormModel';
 
 useHead({ title: 'About | Anastasia Tyuleneva' });
 
 const sentStatus = ref<FormState>(FormState.IDLE);
-const formModel: FormInterface = reactive({
-  name: '',
-  email: '',
-  message: '',
-});
+const formModel: FormModel = reactive(new FormModel('', ''));
 
-const sendMessage = async (): Promise<void> => {
+const submitForm = async (): Promise<void> => {
   sentStatus.value = FormState.SENDING;
   await $fetch('https://stats.baron-pro.ru/api/mail-sender.php', {
     method: 'POST',
@@ -106,11 +102,6 @@ const sendMessage = async (): Promise<void> => {
     body: JSON.stringify(formModel),
   });
   sentStatus.value = FormState.SENT;
-};
-
-const submitForm = (event: Event): Event => {
-  sendMessage();
-  return event;
 };
 </script>
 
