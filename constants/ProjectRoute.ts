@@ -1,4 +1,4 @@
-import RouteInterface from '@/models/RouteInterface';
+import RouteInterface from '@/models/interfaces/RouteInterface';
 
 const ProjectRoute: Array<RouteInterface> = [
   {

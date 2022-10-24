@@ -12,7 +12,7 @@
 
 <script lang="ts" setup>
 import { useHead } from '@vueuse/head';
-import ProjectInterface from '@/models/ProjectInterface';
+import ProjectInterface from '@/models/interfaces/ProjectInterface';
 
 useHead({ title: 'Portfolio | Anastasia Tyuleneva' });
 

@@ -61,7 +61,9 @@ import SocialNetwork from '@/constants/SocialNetwork';
 
     @media screen and (min-width: mq.$tablet) { display: flex; }
 
-    &__item { margin-right: 20px; }
+    &__item {
+      &:not(:last-child) { margin-right: 20px; }
+    }
   }
 
   &__logo {
@@ -87,7 +89,12 @@ import SocialNetwork from '@/constants/SocialNetwork';
       justify-content: flex-end;
     }
 
-    &__link { margin-left: 10px; }
+    &__link {
+      display: flex;
+      align-items: center;
+
+      &:not(:first-child) { margin-left: 10px; }
+    }
   }
 
   &__menu {

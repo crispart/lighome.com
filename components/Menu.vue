@@ -3,7 +3,7 @@
     <!-- триггер открытия -->
     <AppIcon
       class="menu__icon"
-      :name="IconName.TELEGRAM"
+      :name="IconName.MENU"
       @click="isOverlayVisible = true"
     />
     <!-- оверлей -->
@@ -19,7 +19,7 @@
         >
           <AppIcon
             class="menu__overlay__icon__item"
-            :name="IconName.TELEGRAM"
+            :name="IconName.ADD"
           />
         </div>
         <!-- навигационный блок -->
@@ -100,11 +100,19 @@ watch(
       position: fixed;
       top: 0;
       right: 0;
-      padding: 65px 4% 4% 4%;
+      padding: 68px 4% 4% 4%;
       cursor: pointer;
 
       &:hover {
-        #{ $icon }__item { fill: palette.$text-secondary; }
+        #{ $icon }__item {
+          stroke: palette.$text-secondary;
+          transform: rotate(135deg);
+        }
+      }
+
+      &__item {
+        transform: rotate(45deg);
+        transition: transform 250ms ease;
       }
     }
 
@@ -125,8 +133,10 @@ watch(
 
     &__social {
       &__link {
+        &:not(:first-child) { margin-left: 10px; }
+
         &__icon {
-          &:hover { fill: palette.$text-secondary; }
+          &:hover { stroke: palette.$text-secondary; }
         }
       }
     }
