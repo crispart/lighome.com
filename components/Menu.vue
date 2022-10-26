@@ -25,7 +25,7 @@
         <!-- навигационный блок -->
         <nav class="menu__overlay__route">
           <NuxtLink
-            v-for="route in ProjectRoute"
+            v-for="route in AppRoute"
             :key="route.path"
             :to="route.path"
             class="menu__overlay__route__item"
@@ -59,7 +59,7 @@ import { ref } from '@vue/reactivity';
 import { watch } from '@vue/runtime-core';
 import { set } from '@vueuse/shared';
 import IconName from '@/constants/enum/IconName';
-import ProjectRoute from '@/constants/ProjectRoute';
+import AppRoute from '~/constants/AppRoute';
 import SocialNetwork from '@/constants/SocialNetwork';
 
 const route = useRoute();

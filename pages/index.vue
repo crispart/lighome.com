@@ -1,10 +1,11 @@
 <template>
   <div class="portfolio">
     <ProjectCover
-      v-for="project in projects"
+      v-for="project in DesignProject"
       :key="project.name"
-      :description="project.description"
-      :project="project.name"
+      :name="project.name"
+      :path="project.path"
+      :sphere="project.sphere"
       class="portfolio__project"
     />
   </div>
@@ -12,36 +13,9 @@
 
 <script lang="ts" setup>
 import { useHead } from '@vueuse/head';
-import ProjectInterface from '@/models/interfaces/ProjectInterface';
+import DesignProject from '@/constants/DesignProject';
 
 useHead({ title: 'Portfolio | Anastasia Tyuleneva' });
-
-const projects: Array<ProjectInterface> = [
-  {
-    name: 'collage',
-    description: 'Collage',
-  },
-  {
-    name: 'whiskey',
-    description: 'Whiskey',
-  },
-  {
-    name: 'wine',
-    description: 'Wine',
-  },
-  {
-    name: 'faina',
-    description: 'Faina',
-  },
-  {
-    name: 'font',
-    description: 'Font',
-  },
-  {
-    name: 'trid',
-    description: 'Trid',
-  },
-];
 </script>
 
 <style lang="scss" scoped>
@@ -57,7 +31,5 @@ const projects: Array<ProjectInterface> = [
   @media screen and (min-width: mq.$phone) { grid-template-columns: repeat(2, 1fr); }
 
   @media screen and (min-width: mq.$tablet) { padding: 0 4%; }
-
-  &__project { width: 100%; }
 }
 </style>

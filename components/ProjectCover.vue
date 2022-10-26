@@ -1,36 +1,38 @@
 <template>
-  <div
-    class="project"
+  <NuxtLink
+    class="project-cover"
     @mouseenter="isDescriptionShown = true"
     @mouseleave="isDescriptionShown = false"
+    :to="`/project/${path}`"
   >
     <!-- изображение -->
     <img
-      :alt="description"
-      :src="`/img/project/${project}/cover.jpg`"
-      class="project__cover"
+      :alt="name"
+      :src="`/img/project/${path}/cover.jpg`"
+      class="project-cover__image"
     />
     <!-- затемнение -->
-    <div class="project__overlay"></div>
+    <div class="project-cover__overlay"></div>
     <!-- описание -->
     <Transition name="fade-up">
       <div
         v-if="isDescriptionShown"
-        class="project__description"
+        class="project-cover__description"
       >
-        <p class="project__description__name">{{ description }}</p>
-        <p class="project__description__year">2022</p>
+        <p class="project-cover__description__name">{{ name }}</p>
+        <p class="project-cover__description__year">{{ sphere }}</p>
       </div>
     </Transition>
-  </div>
+  </NuxtLink>
 </template>
 
 <script lang="ts" setup>
 import { ref } from '@vue/reactivity';
 
 defineProps<{
-  project: string,
-  description: string;
+  path: string,
+  name: string,
+  sphere: string;
 }>();
 
 const isDescriptionShown = ref<boolean>(false);
@@ -40,11 +42,10 @@ const isDescriptionShown = ref<boolean>(false);
 @use '@/assets/sass/fragments/palette';
 @import "@/assets/sass/transition";
 
-.project {
+.project-cover {
   position: relative;
-  cursor: pointer;
 
-  &__cover {
+  &__image {
     height: 100%;
     width: 100%;
   }

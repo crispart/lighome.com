@@ -3,7 +3,7 @@
     <!-- навигационный блок -->
     <nav class="navbar__route">
       <NuxtLink
-        v-for="route in ProjectRoute"
+        v-for="route in AppRoute"
         :key="route.path"
         :to="route.path"
         class="navbar__route__item"
@@ -38,7 +38,7 @@
 </template>
 
 <script lang="ts" setup>
-import ProjectRoute from '@/constants/ProjectRoute';
+import AppRoute from '~/constants/AppRoute';
 import SocialNetwork from '@/constants/SocialNetwork';
 </script>
 
@@ -73,10 +73,12 @@ import SocialNetwork from '@/constants/SocialNetwork';
     @media screen and (max-width: mq.$tablet) { margin-left: 30px; }
 
     &__label {
-      width: 200px;
+      width: 150px;
       font-size: 24px;
       font-weight: 700;
       text-align: center;
+      letter-spacing: -0.5px;
+      line-height: 26px;
       color: palette.$text-primary;
     }
   }

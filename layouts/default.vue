@@ -8,6 +8,20 @@
   </div>
 </template>
 
+<script lang="ts" setup>
+import { useRoute } from '#app';
+import { watch } from '@vue/runtime-core';
+
+const route = useRoute();
+
+watch(
+  () => route.path,
+  () => {
+    window.scrollTo(0, 0);
+  },
+);
+</script>
+
 <style lang="scss" scoped>
 .layout {
   display: grid;

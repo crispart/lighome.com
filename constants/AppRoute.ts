@@ -1,6 +1,6 @@
 import RouteInterface from '@/models/interfaces/RouteInterface';
 
-const ProjectRoute: Array<RouteInterface> = [
+const AppRoute: Array<RouteInterface> = [
   {
     path: '/',
     label: 'Portfolio',
@@ -11,4 +11,4 @@ const ProjectRoute: Array<RouteInterface> = [
   },
 ];
 
-export default ProjectRoute;
+export default AppRoute;

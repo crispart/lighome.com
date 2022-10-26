@@ -3,11 +3,11 @@ import IconName from '@/constants/enum/IconName';
 
 const SocialNetwork: Array<SocialInterface> = [
   {
-    url: 'https://instagram.com',
+    url: 'https://instagram.com/ligreen_jade',
     icon: IconName.INSTAGRAM,
   },
   {
-    url: 'https://telegram.org',
+    url: 'https://t.me/green_jade',
     icon: IconName.SEND_2,
   },
 ];

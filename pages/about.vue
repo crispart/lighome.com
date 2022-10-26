@@ -7,20 +7,22 @@
       <!-- обложка -->
       <div class="about__texture__label">
         <h1 class="about__texture__label__header">About</h1>
-        <h2 class="about__texture__label__description">
-          Ludwig is a Panasonic Lumix Ambassador and a Member of the Fubiz Studio Talent.
-        </h2>
+        <p class="about__texture__label__description">
+          I create visual language for brands
+        </p>
       </div>
     </div>
     <!-- профиль -->
     <div class="about__contact">
       <!-- владелец -->
       <div class="about__contact__profile">
-        <h2 class="about__contact__profile__header">Ludwig Favre, Born in France in 1976, in north of Paris.</h2>
+        <p class="about__contact__profile__header">
+          My name is Anastasia Tyuleneva. Ligreen&nbsp;Jade is my pseudonym. Currently live in Bali&nbsp;&&nbsp;freelancing.
+        </p>
         <p class="about__contact__profile__description">
-          Ludwig Favre is a Photographer specializing in major cities and landscapes of america, raised in Paris,
-          currently living in Paris. He has created visuals on a variety of media platforms from advertising campaigns
-          to magazine editorials, books, galleries over the world.
+          My main specialty is identity and materials for print. But I do graphic & video for social media and another
+          platform. Graduated from the Institute of Business and Design. I also continue to develop my skill. Now I am
+          studying with the leader of freelancing in graphic design — Alice Yakovleva.
         </p>
       </div>
       <!-- форма -->
@@ -138,7 +140,6 @@ const submitForm = async (): Promise<void> => {
       &__header {
         margin: 0 0 20px 0;
         font-size: 48px;
-        font-weight: 700;
         color: palette.$text-primary-lighten;
       }
 
@@ -175,7 +176,6 @@ const submitForm = async (): Promise<void> => {
 
       &__header {
         margin: 0 0 20px 0;
-        font-size: 20px;
         font-weight: 700;
         color: palette.$text-primary;
       }

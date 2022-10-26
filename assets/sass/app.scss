@@ -5,10 +5,13 @@
 * {
   outline: none;
   text-transform: uppercase;
-  font-size: 20px;
+  font-size: 17px;
+  font-weight: font.$app-weight;
   font-family: font.$app-family;
   color: palette.$text-primary-lighten;
 }
+
+html { scroll-behavior: smooth; }
 
 html,
 body,
@@ -25,6 +28,14 @@ a {
   &.router-link-exact-active { color: palette.$text-primary; }
 }
 
+input,
+textarea {
+  font-weight: 400;
+}
+
 textarea { resize: none; }
 
-::placeholder { color: palette.$text-primary-lighten; }
+::placeholder {
+  font-weight: 400;
+  color: palette.$text-primary-lighten;
+}
