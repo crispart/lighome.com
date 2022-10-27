@@ -244,6 +244,7 @@ if (route.query.focus === 'form') {
         background-color: #111111;
         text-transform: uppercase;
         line-height: 0;
+        border: none;
       }
     }
 
