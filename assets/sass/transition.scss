@@ -9,7 +9,15 @@
   filter: blur(5px);
 }
 
-/* проявление с поднятием */
+/* простое проявление */
+
+.fade-enter-active,
+.fade-leave-active { transition: opacity 250ms ease; }
+
+.fade-enter-from,
+.fade-leave-to { opacity: 0; }
+
+/* проявление с подъёмом */
 
 .fade-up-enter-active,
 .fade-up-leave-active { transition: opacity 250ms ease, transform 250ms ease; }
@@ -20,10 +28,13 @@
   transform: translateY(20px);
 }
 
-/* простое проявление */
+/* проявление с размытием */
 
-.fade-enter-active,
-.fade-leave-active { transition: opacity 250ms ease; }
+.fade-blur-slow-enter-active,
+.fade-blur-slow-leave-active { transition: opacity 500ms ease, filter 250ms ease; }
 
-.fade-enter-from,
-.fade-leave-to { opacity: 0; }
+.fade-blur-slow-enter-from,
+.fade-blur-slow-leave-to {
+  opacity: 0;
+  filter: blur(5px);
+}
