@@ -5,13 +5,14 @@
       <h1 class="introduction__name">{{ currentProject.name }}</h1>
       <p class="introduction__description">{{ currentProject.description }}</p>
     </div>
-    <!-- галерея -->
+    <!-- сетка -->
     <div class="showcase">
       <div
         v-for="image in currentProject.images"
         :key="image.name"
         :style="{ width: `${100 / 12 * image.size}%` }"
         class="showcase__wrapper"
+        @click="selectImage(image)"
       >
         <img
           :alt="image.description"
@@ -37,17 +38,114 @@
         />
       </div>
     </div>
+    <!-- галерея -->
+    <Transition name="fade-up">
+      <div
+        v-if="selectedImage"
+        ref="galleryElement"
+        class="gallery"
+        @mousemove="controlHud"
+      >
+        <!-- оверлей -->
+        <div
+          class="gallery__overlay"
+          @click="selectImage(null)"
+        ></div>
+        <!-- триггер закрытия -->
+        <Transition name="fade-blur-slow">
+          <div
+            v-if="isHudShown"
+            class="gallery__icon-close"
+            @click="selectImage(null)"
+          >
+            <AppIcon
+              :name="IconName.ADD"
+              class="gallery__icon-close__item"
+            />
+          </div>
+        </Transition>
+        <!-- стрелка влево -->
+        <Transition name="fade-blur-slow">
+          <div
+            v-if="isHudShown && currentProject.images.length > 1"
+            class="gallery__icon-left"
+            @click="selectImage(previousImage)"
+          >
+            <AppIcon
+              :name="IconName.ARROW_LEFT_1"
+              class="gallery__icon-left__item"
+            />
+          </div>
+        </Transition>
+        <!-- стрелка вправо -->
+        <Transition name="fade-blur-slow">
+          <div
+            v-if="isHudShown && currentProject.images.length > 1"
+            class="gallery__icon-right"
+            @click="selectImage(nextImage)"
+          >
+            <AppIcon
+              :name="IconName.ARROW_RIGHT_1"
+              class="gallery__icon-right__item"
+            />
+          </div>
+        </Transition>
+        <!-- изображение -->
+        <Transition name="fade-blur-slow">
+          <div
+            :key="selectedImage?.name"
+            class="gallery__image"
+            @click="selectImage(null)"
+          >
+            <img
+              :alt="selectedImage?.description"
+              :src="`/img/project/${currentProject.path}/${selectedImage?.name}.jpg`"
+              class="gallery__image__item"
+            >
+            <div class="gallery__image__cover"></div>
+          </div>
+        </Transition>
+        <!-- альбом -->
+        <Transition name="fade-blur-slow">
+          <div
+            v-if="isHudShown && currentProject.images.length > 1"
+            class="gallery__album"
+          >
+            <div
+              v-for="image in currentProject.images"
+              :key="image.name"
+              :class="{ 'gallery__album__image--active': image.name === selectedImage?.name }"
+              class="gallery__album__image"
+              @click="selectImage(image)"
+            >
+              <img
+                :alt="image.description"
+                :src="`/img/project/${currentProject.path}/${image.name}.jpg`"
+                class="gallery__album__image__item"
+              >
+              <div class="gallery__album__image__cover"></div>
+            </div>
+          </div>
+        </Transition>
+      </div>
+    </Transition>
   </div>
 </template>
 
 <script lang="ts" setup>
 import { useRoute } from '#app';
-import { computed } from '@vue/reactivity';
-import { get } from '@vueuse/core';
+import { computed, ref } from '@vue/reactivity';
+import { get, useDebounceFn, useMagicKeys, useThrottleFn } from '@vueuse/core';
 import DesignProject from '~/constants/DesignProject';
 import ProjectInterface from '~/models/interfaces/ProjectInterface';
+import IconName from '~/constants/enum/IconName';
+import ProjectImageInterface from '~/models/interfaces/ProjectImageInterface';
+import { set } from '@vueuse/shared';
+import { watchEffect } from '@vue/runtime-core';
 
 const route = useRoute();
+
+// текущий проект
 
 const currentProjectIndex = computed<number>(() => {
   const LAST_ROUTE_ARRAY_PART = 2;
@@ -60,6 +158,10 @@ const currentProjectIndex = computed<number>(() => {
   return 0;
 });
 
+const currentProject = computed<ProjectInterface>(() => (DesignProject[get(currentProjectIndex)]));
+
+// другие проекты
+
 const previousProjectIndex = computed<number>(() => (
   get(currentProjectIndex) === 0 ? DesignProject.length - 1 : get(currentProjectIndex) - 1
 ));
@@ -68,16 +170,84 @@ const nextProjectIndex = computed<number>(() => (
   get(currentProjectIndex) === DesignProject.length - 1 ? 0 : get(currentProjectIndex) + 1
 ));
 
-const currentProject = computed<ProjectInterface>(() => (DesignProject[get(currentProjectIndex)]));
-
 const previousProject = computed<ProjectInterface>(() => (DesignProject[get(previousProjectIndex)]));
 
 const nextProject = computed<ProjectInterface>(() => (DesignProject[get(nextProjectIndex)]));
+
+// галерея изображений
+
+const selectedImage = ref<ProjectImageInterface | null>(null);
+
+const selectedImageIndex = computed<number>(() => {
+  for (let i = 0; i < get(currentProject).images.length; i++) {
+    if (get(currentProject).images[i].name === get(selectedImage)?.name) {
+      return i;
+    }
+  }
+  return 0;
+});
+
+const previousImageIndex = computed<number>(() => (
+  get(selectedImageIndex) === 0 ? get(currentProject).images.length - 1 : get(selectedImageIndex) - 1
+));
+
+const nextImageIndex = computed<number>(() => (
+  get(selectedImageIndex) === get(currentProject).images.length - 1 ? 0 : get(selectedImageIndex) + 1
+));
+
+const previousImage = computed<ProjectImageInterface>(() => (
+  get(currentProject).images[get(previousImageIndex)]),
+);
+
+const nextImage = computed<ProjectImageInterface>(() => (
+  get(currentProject).images[get(nextImageIndex)]),
+);
+
+// автоскрытие при бездействии
+
+const isHudShown = ref<boolean>(true);
+
+const showHudThrottled = useThrottleFn(() => {
+  set(isHudShown, true);
+}, 100);
+
+const hideHudDebouncedFn = useDebounceFn(() => {
+  if (get(selectedImage)) {
+    set(isHudShown, false);
+  }
+}, 2000);
+
+const controlHud = (): void => {
+  showHudThrottled();
+  hideHudDebouncedFn();
+};
+
+const selectImage = (image: ProjectImageInterface | null): void => {
+  set(selectedImage, image);
+  controlHud();
+};
+
+// навигация стрелками
+
+const { arrowLeft, arrowRight, escape } = useMagicKeys();
+
+watchEffect(() => {
+  if (get(arrowLeft)) {
+    selectImage(get(previousImage));
+  }
+  if (get(arrowRight)) {
+    selectImage(get(nextImage));
+  }
+  if (get(escape)) {
+    selectImage(null);
+  }
+});
 </script>
 
 <style lang="scss" scoped>
 @use "@/assets/sass/fragments/palette";
 @use "@/assets/sass/fragments/mq";
+@import "@/assets/sass/transition";
 
 .project {
   @media screen and (min-width: mq.$tablet) { padding: 0 4%; }
@@ -118,10 +288,11 @@ const nextProject = computed<ProjectInterface>(() => (DesignProject[get(nextProj
 
       &__cover {
         position: absolute;
-        width: 100%;
-        height: 100%;
-        left: 0;
-        top: 0;
+        width: calc(100% - 10px);
+        height: calc(100% - 20px);
+        left: 5px;
+        top: 10px;
+        cursor: zoom-in;
       }
     }
   }
@@ -147,6 +318,144 @@ const nextProject = computed<ProjectInterface>(() => (DesignProject[get(nextProj
       @media screen and (max-width: mq.$phone) { grid-template-columns: 1fr; }
 
       @media screen and (min-width: mq.$phone) { grid-template-columns: repeat(2, 1fr); }
+    }
+  }
+
+  .gallery {
+    position: fixed;
+    display: flex;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    user-select: none;
+
+    @media (hover: none) and (pointer: coarse) { display: none }
+
+    &__overlay {
+      position: fixed;
+      height: 100%;
+      width: 100%;
+      top: 0;
+      left: 0;
+      cursor: pointer;
+      background-color: palette.$app-secondary-alpha;
+    }
+
+    &__icon-close,
+    &__icon-left,
+    &__icon-right {
+      position: fixed;
+      top: 0;
+      padding: 68px 4% 4% 4%;
+      cursor: pointer;
+
+      &:hover {
+        ::v-deep(.icon) { stroke: palette.$text-secondary; }
+      }
+    }
+
+    &__icon-close {
+      right: 0;
+      z-index: 2;
+
+      &:hover {
+        ::v-deep(.icon) { transform: rotate(135deg); }
+      }
+
+      &__item {
+        transform: rotate(45deg);
+        transition: transform 250ms ease;
+      }
+    }
+
+    &__icon-left,
+    &__icon-right {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      z-index: 1;
+
+      &__item { transition: transform 250ms ease; }
+    }
+
+    &__icon-left {
+      left: 0;
+
+      &:hover {
+        ::v-deep(.icon) { transform: translateX(-20px); }
+      }
+    }
+
+    &__icon-right {
+      right: 0;
+
+      &:hover {
+        ::v-deep(.icon) { transform: translateX(20px); }
+      }
+    }
+
+    &__image {
+      position: fixed;
+      max-height: 100%;
+      max-width: 100%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      margin: auto;
+
+      &__item {
+        max-height: 100vh;
+        max-width: 100vw;
+      }
+
+      &__cover {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        cursor: pointer;
+      }
+    }
+
+    &__album {
+      position: fixed;
+      display: flex;
+      height: 80px;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      &__image {
+        position: relative;
+        height: 80px;
+        width: 80px;
+
+        &__item {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+        &__cover {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          top: 0;
+        }
+
+        &:not(&--active) {
+          cursor: pointer;
+          opacity: .6;
+          transition: opacity 250ms ease;
+
+          &:hover { opacity: .9; }
+        }
+
+        &:not(:first-child) { margin-left: 10px; }
+      }
     }
   }
 }
