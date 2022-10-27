@@ -5,7 +5,7 @@
       class="footer__link"
       to="/about?focus=form"
     >
-      Order design
+      Order &nbsp;♡&nbsp; design
     </NuxtLink>
     <a
       v-if="route.name === 'about'"
