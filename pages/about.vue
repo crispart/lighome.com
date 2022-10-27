@@ -13,11 +13,14 @@
       </div>
     </div>
     <!-- профиль -->
-    <div class="about__contact">
+    <div
+      class="about__contact"
+      ref="contactForm"
+    >
       <!-- владелец -->
       <div class="about__contact__profile">
         <p class="about__contact__profile__header">
-          My name is Anastasia Tyuleneva. Ligreen&nbsp;Jade is my pseudonym. Currently live in Bali&nbsp;&&nbsp;freelancing.
+          My name is Anastasia Tyuleneva. My pseudonym is Ligreen&nbsp;Jade. Currently live in Bali&nbsp;&&nbsp;freelancing.
         </p>
         <p class="about__contact__profile__description">
           My main specialty is identity and materials for print. But I do graphic & video for social media and another
@@ -36,6 +39,7 @@
           <input
             v-model="formModel.name"
             :disabled="sentStatus === FormState.SENDING"
+            autofocus
             class="about__contact__form__item__input"
             name="name"
             placeholder="Your name..."
@@ -90,8 +94,14 @@ import { reactive, ref } from '@vue/reactivity';
 import { useHead } from '@vueuse/head';
 import FormState from '@/constants/enum/FormState';
 import FormModel from '@/models/classes/FormModel';
+import { useRoute } from '#app';
+import { get } from '@vueuse/core';
 
 useHead({ title: 'About | Anastasia Tyuleneva' });
+
+const route = useRoute();
+
+// обработка полей формы
 
 const sentStatus = ref<FormState>(FormState.IDLE);
 const formModel: FormModel = reactive(new FormModel('', ''));
@@ -105,6 +115,14 @@ const submitForm = async (): Promise<void> => {
   });
   sentStatus.value = FormState.SENT;
 };
+
+// скролл к форме по кнопке "заказать дизайн"
+
+const contactForm = ref<HTMLElement | null>(null);
+
+if (route.query.focus === 'form') {
+  setTimeout(() => (get(contactForm)?.scrollIntoView()), 1000);
+}
 </script>
 
 <style lang="scss" scoped>
