@@ -16,9 +16,7 @@ const route = useRoute();
 
 watch(
   () => route.path,
-  () => {
-    window.scrollTo(0, 0);
-  },
+  () => (window.scrollTo(0, 0)),
 );
 </script>
 
