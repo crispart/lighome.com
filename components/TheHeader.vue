@@ -14,8 +14,9 @@
     <!-- логотип -->
     <nav class="navbar__logo">
       <NuxtLink
+        :style="{ cursor: route.name === 'index' ? 'default' : 'pointer' }"
+        :to="route.name === 'index' ? '' : '/'"
         class="navbar__logo__label"
-        to="/"
       >
         Anastasia Tyuleneva
       </NuxtLink>
@@ -40,6 +41,9 @@
 <script lang="ts" setup>
 import AppRoute from '~/constants/AppRoute';
 import SocialNetwork from '@/constants/SocialNetwork';
+import { useRoute } from '#app';
+
+const route = useRoute();
 </script>
 
 <style lang="scss" scoped>
