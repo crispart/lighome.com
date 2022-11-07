@@ -5,7 +5,7 @@
       <!-- плеер -->
       <video
         src="@/assets/video/about.mp4"
-        poster="@/assets/img/bg-pattern.png"
+        poster="@/assets/img/about-poster.jpg"
         class="about__texture__image"
         autoplay
         loop
