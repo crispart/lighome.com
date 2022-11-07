@@ -106,7 +106,7 @@
           </div>
         </Transition>
         <!-- альбом -->
-        <Transition name="fade-blur-slow">
+        <!-- <Transition name="fade-blur-slow">
           <div
             v-if="isHudShown && currentProject.images.length > 1"
             class="gallery__album"
@@ -126,7 +126,7 @@
               <div class="gallery__album__image__cover"></div>
             </div>
           </div>
-        </Transition>
+        </Transition> -->
       </div>
     </Transition>
   </div>
