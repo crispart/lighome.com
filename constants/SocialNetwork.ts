@@ -8,7 +8,7 @@ const SocialNetwork: Array<SocialInterface> = [
   },
   {
     url: 'https://t.me/green_jade',
-    icon: IconName.SEND_2,
+    icon: IconName.TELEGRAM,
   },
 ];
 

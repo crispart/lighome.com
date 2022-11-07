@@ -19,7 +19,7 @@
         >
           <AppIcon
             class="menu__overlay__icon__item"
-            :name="IconName.ADD"
+            :name="IconName.CROSS"
           />
         </div>
         <!-- навигационный блок -->
@@ -106,14 +106,11 @@ watch(
       &:hover {
         #{ $icon }__item {
           stroke: palette.$text-secondary;
-          transform: rotate(135deg);
+          transform: rotate(90deg);
         }
       }
 
-      &__item {
-        transform: rotate(45deg);
-        transition: transform 250ms ease;
-      }
+      &__item { transition: transform 250ms ease; }
     }
 
     &__route {

@@ -59,7 +59,7 @@
             @click="selectImage(null)"
           >
             <AppIcon
-              :name="IconName.ADD"
+              :name="IconName.CROSS"
               class="gallery__icon-close__item"
             />
           </div>
@@ -72,7 +72,7 @@
             @click="selectImage(previousImage)"
           >
             <AppIcon
-              :name="IconName.ARROW_LEFT_1"
+              :name="IconName.ARROW_LEFT"
               class="gallery__icon-left__item"
             />
           </div>
@@ -85,7 +85,7 @@
             @click="selectImage(nextImage)"
           >
             <AppIcon
-              :name="IconName.ARROW_RIGHT_1"
+              :name="IconName.ARROW_RIGHT"
               class="gallery__icon-right__item"
             />
           </div>
@@ -360,13 +360,10 @@ watchEffect(() => {
       z-index: 2;
 
       &:hover {
-        ::v-deep(.icon) { transform: rotate(135deg); }
+        ::v-deep(.icon) { transform: rotate(90deg); }
       }
 
-      &__item {
-        transform: rotate(45deg);
-        transition: transform 250ms ease;
-      }
+      &__item { transition: transform 250ms ease; }
     }
 
     &__icon-left,

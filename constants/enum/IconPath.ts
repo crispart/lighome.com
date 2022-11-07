@@ -1,12 +1,12 @@
 const IconPath = {
-  ADD: '<path d="M6 12H18" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 18V6" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
-  ARROW_LEFT_1: '<path d="M15 19.9201L8.47997 13.4001C7.70997 12.6301 7.70997 11.3701 8.47997 10.6001L15 4.08008" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>',
-  ARROW_RIGHT_1: '<path d="M8.91003 19.9201L15.43 13.4001C16.2 12.6301 16.2 11.3701 15.43 10.6001L8.91003 4.08008" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>',
-  CLOSE_CIRCLE: '<path d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9.16998 14.83L14.83 9.17004" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.83 14.83L9.16998 9.17004" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
-  CLOSE_SQUARE: '<path d="M9.16998 14.83L14.83 9.17004" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M14.83 14.83L9.16998 9.17004" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
-  INSTAGRAM: '<path d="M9 22H15C20 22 22 20 22 15V9C22 4 20 2 15 2H9C4 2 2 4 2 9V15C2 20 4 22 9 22Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 15.5C13.933 15.5 15.5 13.933 15.5 12C15.5 10.067 13.933 8.5 12 8.5C10.067 8.5 8.5 10.067 8.5 12C8.5 13.933 10.067 15.5 12 15.5Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M17.6361 7H17.6477" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>',
-  MENU: '<path d="M3 7H21" stroke-width="1.5" stroke-linecap="round"/><path d="M3 12H21" stroke-width="1.5" stroke-linecap="round"/><path d="M3 17H21" stroke-width="1.5" stroke-linecap="round"/>',
-  SEND_2: '<path d="M7.39999 6.32003L15.89 3.49003C19.7 2.22003 21.77 4.30003 20.51 8.11003L17.68 16.6C15.78 22.31 12.66 22.31 10.76 16.6L9.91999 14.08L7.39999 13.24C1.68999 11.34 1.68999 8.23003 7.39999 6.32003Z" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M10.11 13.6501L13.69 10.0601" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>',
+  ARROW_LEFT: '<path stroke-miterlimit="10" stroke-width="1.5" d="M16.5 21l-9-9 9-9"/>',
+  ARROW_RIGHT: '<path stroke-miterlimit="10" stroke-width="1.5" d="M7.5 3l9 9-9 9"/>',
+  CROSS: '<style>.st0{stroke-width:1.5;stroke-linecap:square}</style><path d="M4 4l16 16" class="st0"/><path d="M4 20L20 4" class="st0"/>',
+  HEART_OUTLINE: '<path stroke-miterlimit="10" stroke-width="1.5" d="M19.7 4.7C17.6 2.6 13.9 3 12 6.1 10.1 3 6.4 2.6 4.3 4.7 3.1 5.8 2.6 7.3 2.6 8.8c0 1.3.4 2.5 1.2 3.6.1.2.3.4.5.5l7.7 7.7h0l7.7-7.7c.2-.2.3-.4.5-.5.8-1 1.2-2.3 1.2-3.6 0-1.5-.5-3-1.7-4.1z"/>',
+  HEART_FILLED: '<path d="M19.7 4.7C17.6 2.6 13.9 3 12 6.1 10.1 3 6.4 2.6 4.3 4.7 3.1 5.8 2.6 7.3 2.6 8.8c0 1.3.4 2.5 1.2 3.6.1.2.3.4.5.5l7.7 7.7 7.7-7.7c.2-.2.3-.4.5-.5.8-1 1.2-2.3 1.2-3.6 0-1.5-.5-3-1.7-4.1z"/>',
+  INSTAGRAM: '<style>.st1{stroke-width:1.5;stroke-miterlimit:10}</style><g id="Layer_2"><path d="M3 3h18.1v18.1H3z" class="st1"/><circle cx="12" cy="12" r="4.5" class="st1"/><circle cx="17.7" cy="6.3" r="1.2" stroke-miterlimit="10"/></g>',
+  MENU: '<style>.st0{stroke-width:1.5;stroke-linecap:square}</style><path d="M3 7h18" class="st0"/><path d="M3 12h18" class="st0"/><path d="M3 17h18" class="st0"/>',
+  TELEGRAM: '<style>.st0{stroke-width:1.5;stroke-miterlimit:10}</style><g><path d="M21 3L3 8.7l7.5 4.7 4.8 7.6zM10.5 13.4L21 3" class="st0"/></g>',
 } as const;
 
 type IconPath = keyof typeof IconPath
