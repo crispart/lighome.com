@@ -3,7 +3,17 @@
     <!-- видео -->
     <div class="about__texture">
       <!-- плеер -->
-      <div class="about__texture__image"></div>
+      <video
+        src="@/assets/video/about.mp4"
+        poster="@/assets/img/bg-pattern.png"
+        class="about__texture__image"
+        autoplay
+        loop
+        muted
+        playsinline
+      >
+        Sorry, your browser doesn't support embedded videos.
+      </video>
       <!-- обложка -->
       <div class="about__texture__label">
         <h1 class="about__texture__label__header">About</h1>
@@ -20,7 +30,8 @@
       <!-- владелец -->
       <div class="about__contact__profile">
         <p class="about__contact__profile__header">
-          My name is Anastasia Tyuleneva. My pseudonym is Ligreen&nbsp;Jade. Currently live in Bali&nbsp;&&nbsp;freelancing.
+          My name is Anastasia Tyuleneva. My pseudonym is Ligreen&nbsp;Jade. Currently live in
+          Bali&nbsp;&&nbsp;freelancing.
         </p>
         <p class="about__contact__profile__description">
           My main specialty is identity and materials for print. But I do graphic & video for social media and another
@@ -136,14 +147,13 @@ if (route.query.focus === 'form') {
   &__texture {
     position: relative;
     height: calc(80vh - 160px);
+    min-height: 240px;
     max-height: 480px;
 
     &__image {
       height: 100%;
       width: 100%;
-      background-image: url(@/assets/img/bg-pattern.png);
-      background-position: left top;
-      background-repeat: repeat;
+      object-fit: cover;
     }
 
     &__label {
@@ -163,7 +173,7 @@ if (route.query.focus === 'form') {
 
       &__description {
         margin: 0;
-        font-size: 20px;
+        font-size: 22px;
         color: palette.$text-secondary;
       }
     }
@@ -174,11 +184,17 @@ if (route.query.focus === 'form') {
     padding: 0 4%;
     max-width: 1400px;
 
-    @media screen and (max-width: mq.$phone) { flex-direction: column; }
+    @media screen and (max-width: mq.$phone) {
+      flex-direction: column;
+    }
 
-    @media screen and (max-width: mq.$tablet) { margin: 60px auto 0 auto; }
+    @media screen and (max-width: mq.$tablet) {
+      margin: 60px auto 0 auto;
+    }
 
-    @media screen and (min-width: mq.$tablet) { margin: 80px auto 0 auto; }
+    @media screen and (min-width: mq.$tablet) {
+      margin: 80px auto 0 auto;
+    }
 
     &__profile {
       display: flex;
@@ -186,11 +202,17 @@ if (route.query.focus === 'form') {
       flex-grow: 1;
       flex-basis: 0;
 
-      @media screen and (max-width: mq.$phone) { margin-bottom: 60px; }
+      @media screen and (max-width: mq.$phone) {
+        margin-bottom: 60px;
+      }
 
-      @media screen and (min-width: mq.$phone) { padding: 0 4% 0 0; }
+      @media screen and (min-width: mq.$phone) {
+        padding: 0 4% 0 0;
+      }
 
-      @media screen and (min-width: mq.$tablet) { padding: 0 4%; }
+      @media screen and (min-width: mq.$tablet) {
+        padding: 0 4%;
+      }
 
       &__header {
         margin: 0 0 20px 0;
@@ -210,9 +232,13 @@ if (route.query.focus === 'form') {
       flex-grow: 1;
       flex-basis: 0;
 
-      @media screen and (min-width: mq.$phone) { padding: 0 0 0 4%; }
+      @media screen and (min-width: mq.$phone) {
+        padding: 0 0 0 4%;
+      }
 
-      @media screen and (min-width: mq.$tablet) { padding: 0 4%; }
+      @media screen and (min-width: mq.$tablet) {
+        padding: 0 4%;
+      }
 
       &__item {
         display: flex;
@@ -243,7 +269,6 @@ if (route.query.focus === 'form') {
         color: #ffffff;
         background-color: #111111;
         text-transform: uppercase;
-        line-height: 0;
         border: none;
       }
     }
