@@ -1,7 +1,12 @@
 <template>
-  <div class="error">
-    <div class="error__not-found">
-      <h1 class="error__not-found__message">Page Not Found</h1>
+  <div class="page">
+    <div class="page__error">
+      <h1
+        class="page__error__message"
+        :title="error.message"
+      >
+        {{ error.statusCode === 404 ? 'Page not found' : error.statusMessage }}
+      </h1>
       <NuxtLink to="/">Come back home</NuxtLink>
     </div>
   </div>
@@ -11,16 +16,20 @@
 import { useHead } from '@vueuse/head';
 
 useHead({ title: 'Not Found | Anastasia Tyuleneva' });
+
+defineProps({ error: Object });
 </script>
 
 <style lang="scss" scoped>
 @use "@/assets/sass/fragments/palette";
 
-.error {
+.page {
   display: flex;
   height: 100%;
+  align-items: center;
+  justify-content: center;
 
-  &__not-found {
+  &__error {
     display: flex;
     flex-direction: column;
     align-items: center;
