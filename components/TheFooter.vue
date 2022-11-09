@@ -50,9 +50,7 @@ const route = useRoute();
   &__link {
     $link: &;
 
-    &__label {
-      transition: color 250ms ease;
-    }
+    &__label { transition: color 250ms ease; }
 
     &__icon {
       fill: palette.$text-primary-lighten;
@@ -60,9 +58,7 @@ const route = useRoute();
     }
 
     &:hover {
-      #{ $link }__label {
-        color: palette.$text-primary;
-      }
+      #{ $link }__label { color: palette.$text-primary; }
 
       #{ $link }__icon {
         stroke: palette.$text-primary;

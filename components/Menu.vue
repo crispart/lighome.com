@@ -2,8 +2,8 @@
   <div class="menu">
     <!-- триггер открытия -->
     <AppIcon
-      class="menu__icon"
       :name="IconName.MENU"
+      class="menu__icon"
       @click="isOverlayVisible = true"
     />
     <!-- оверлей -->
@@ -18,8 +18,8 @@
           @click="isOverlayVisible = false"
         >
           <AppIcon
-            class="menu__overlay__icon__item"
             :name="IconName.CROSS"
+            class="menu__overlay__icon__item"
           />
         </div>
         <!-- навигационный блок -->
@@ -43,8 +43,8 @@
             target="_blank"
           >
             <AppIcon
-              class="menu__overlay__social__link__icon"
               :name="social.icon"
+              class="menu__overlay__social__link__icon"
             />
           </a>
         </nav>

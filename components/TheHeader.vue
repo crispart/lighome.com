@@ -19,8 +19,8 @@
         class="navbar__logo__label"
       >
         <img
-          src="~/assets/img/logo.svg"
           alt="Logo"
+          src="~/assets/img/logo.svg"
           width="110"
         />
       </NuxtLink>
@@ -34,11 +34,11 @@
         class="navbar__social__link"
         target="_blank"
       >
-        <AppIcon :name="social.icon" />
+        <AppIcon :name="social.icon"/>
       </a>
     </nav>
     <!-- мобильное меню -->
-    <Menu class="navbar__menu" />
+    <Menu class="navbar__menu"/>
   </header>
 </template>
 
@@ -60,27 +60,17 @@ const route = useRoute();
   height: 160px;
   padding: 0 4%;
 
-  @media screen and (max-width: mq.$tablet) {
-    grid-template-columns: auto 30px;
-  }
+  @media screen and (max-width: mq.$tablet) { grid-template-columns: auto 30px; }
 
-  @media screen and (min-width: mq.$tablet) {
-    grid-template-columns: 1fr auto 1fr;
-  }
+  @media screen and (min-width: mq.$tablet) { grid-template-columns: 1fr auto 1fr; }
 
   &__route {
-    @media screen and (max-width: mq.$tablet) {
-      display: none;
-    }
+    @media screen and (max-width: mq.$tablet) { display: none; }
 
-    @media screen and (min-width: mq.$tablet) {
-      display: flex;
-    }
+    @media screen and (min-width: mq.$tablet) { display: flex; }
 
     &__item {
-      &:not(:last-child) {
-        margin-right: 20px;
-      }
+      &:not(:last-child) { margin-right: 20px; }
     }
   }
 
@@ -88,9 +78,7 @@ const route = useRoute();
     display: flex;
     justify-content: center;
 
-    @media screen and (max-width: mq.$tablet) {
-      margin-left: 30px;
-    }
+    @media screen and (max-width: mq.$tablet) { margin-left: 30px; }
 
     &__label {
       width: 150px;
@@ -104,9 +92,7 @@ const route = useRoute();
   }
 
   &__social {
-    @media screen and (max-width: mq.$tablet) {
-      display: none;
-    }
+    @media screen and (max-width: mq.$tablet) { display: none; }
 
     @media screen and (min-width: mq.$tablet) {
       display: flex;
@@ -117,9 +103,7 @@ const route = useRoute();
       display: flex;
       align-items: center;
 
-      &:not(:first-child) {
-        margin-left: 10px;
-      }
+      &:not(:first-child) { margin-left: 10px; }
     }
   }
 
@@ -129,9 +113,7 @@ const route = useRoute();
       justify-content: flex-end;
     }
 
-    @media screen and (min-width: mq.$tablet) {
-      display: none;
-    }
+    @media screen and (min-width: mq.$tablet) { display: none; }
   }
 }
 </style>

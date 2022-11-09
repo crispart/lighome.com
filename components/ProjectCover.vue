@@ -1,9 +1,9 @@
 <template>
   <NuxtLink
+    :to="`/project/${path}`"
     class="project-cover"
     @mouseenter="isDescriptionShown = true"
     @mouseleave="isDescriptionShown = false"
-    :to="`/project/${path}`"
   >
     <!-- изображение -->
     <img

@@ -1,16 +1,16 @@
 <template>
   <svg
-    class="icon"
-    version="1.1"
-    viewBox="0 0 24 24"
     :height="size"
     :width="size"
-    xml:space="preserve"
-    x="0px"
-    y="0px"
+    class="icon"
     style="enable-background:new 0 0 24 24;"
+    version="1.1"
+    viewBox="0 0 24 24"
+    x="0px"
+    xml:space="preserve"
     xmlns="http://www.w3.org/2000/svg"
     xmlns:xlink="http://www.w3.org/1999/xlink"
+    y="0px"
     v-html="IconPath[name]"
   >
   </svg>
@@ -36,8 +36,6 @@ withDefaults(
   stroke: palette.$text-primary-lighten;
   transition: stroke 250ms ease;
 
-  &:hover {
-    stroke: palette.$text-primary;
-  }
+  &:hover { stroke: palette.$text-primary; }
 }
 </style>

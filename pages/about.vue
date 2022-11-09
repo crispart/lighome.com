@@ -4,13 +4,13 @@
     <div class="about__texture">
       <!-- плеер -->
       <video
-        src="@/assets/video/about.mp4"
-        poster="@/assets/img/about-poster.jpg"
-        class="about__texture__image"
         autoplay
+        class="about__texture__image"
         loop
         muted
         playsinline
+        poster="@/assets/img/about-poster.jpg"
+        src="@/assets/video/about.mp4"
       >
         Sorry, your browser doesn't support embedded videos.
       </video>
@@ -24,8 +24,8 @@
     </div>
     <!-- профиль -->
     <div
-      class="about__contact"
       ref="contactForm"
+      class="about__contact"
     >
       <!-- владелец -->
       <div class="about__contact__profile">
@@ -184,17 +184,11 @@ if (route.query.focus === 'form') {
     padding: 0 4%;
     max-width: 1400px;
 
-    @media screen and (max-width: mq.$phone) {
-      flex-direction: column;
-    }
+    @media screen and (max-width: mq.$phone) { flex-direction: column; }
 
-    @media screen and (max-width: mq.$tablet) {
-      margin: 60px auto 0 auto;
-    }
+    @media screen and (max-width: mq.$tablet) { margin: 60px auto 0 auto; }
 
-    @media screen and (min-width: mq.$tablet) {
-      margin: 80px auto 0 auto;
-    }
+    @media screen and (min-width: mq.$tablet) { margin: 80px auto 0 auto; }
 
     &__profile {
       display: flex;
@@ -202,17 +196,11 @@ if (route.query.focus === 'form') {
       flex-grow: 1;
       flex-basis: 0;
 
-      @media screen and (max-width: mq.$phone) {
-        margin-bottom: 60px;
-      }
+      @media screen and (max-width: mq.$phone) { margin-bottom: 60px; }
 
-      @media screen and (min-width: mq.$phone) {
-        padding: 0 4% 0 0;
-      }
+      @media screen and (min-width: mq.$phone) { padding: 0 4% 0 0; }
 
-      @media screen and (min-width: mq.$tablet) {
-        padding: 0 4%;
-      }
+      @media screen and (min-width: mq.$tablet) { padding: 0 4%; }
 
       &__header {
         margin: 0 0 20px 0;
@@ -232,13 +220,9 @@ if (route.query.focus === 'form') {
       flex-grow: 1;
       flex-basis: 0;
 
-      @media screen and (min-width: mq.$phone) {
-        padding: 0 0 0 4%;
-      }
+      @media screen and (min-width: mq.$phone) { padding: 0 0 0 4%; }
 
-      @media screen and (min-width: mq.$tablet) {
-        padding: 0 4%;
-      }
+      @media screen and (min-width: mq.$tablet) { padding: 0 4%; }
 
       &__item {
         display: flex;
