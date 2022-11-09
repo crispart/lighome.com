@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+  <url>
+    <loc>https://lighome.com/</loc>
+    <lastmod>2022-11-09T10:53:08+00:00</lastmod>
+    <priority>1.0</priority>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://lighome.com/project/hipo/</loc>
+    <lastmod>2022-11-09T10:53:09+00:00</lastmod>
+    <priority>0.8</priority>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://lighome.com/about/</loc>
+    <lastmod>2022-11-09T10:53:08+00:00</lastmod>
+    <priority>0.9</priority>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://lighome.com/project/composition/</loc>
+    <lastmod>2022-11-09T10:53:09+00:00</lastmod>
+    <priority>0.8</priority>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://lighome.com/project/postcard/</loc>
+    <lastmod>2022-11-09T10:53:09+00:00</lastmod>
+    <priority>0.8</priority>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://lighome.com/about/?focus=form</loc>
+    <lastmod>2022-11-09T10:53:08+00:00</lastmod>
+    <priority>0.9</priority>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>https://lighome.com/project/merkaba/</loc>
+    <lastmod>2022-11-09T10:53:09+00:00</lastmod>
+    <priority>0.8</priority>
+    <changefreq>daily</changefreq>
+  </url>
+</urlset>
