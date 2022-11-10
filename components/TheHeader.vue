@@ -31,6 +31,7 @@
         v-for="social in SocialNetwork"
         :key="social.icon"
         :href="social.url"
+        :title="social.icon"
         class="navbar__social__link"
         target="_blank"
       >
