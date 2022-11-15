@@ -18,6 +18,7 @@
           :alt="image.description"
           :src="`/img/project/${currentProject.path}/${image.name}.jpg`"
           class="showcase__wrapper__image"
+          loading="lazy"
         >
         <div class="showcase__wrapper__cover"></div>
       </div>
@@ -101,6 +102,7 @@
               :alt="selectedImage?.description"
               :src="`/img/project/${currentProject.path}/${selectedImage?.name}.jpg`"
               class="gallery__image__item"
+              loading="lazy"
             >
             <div class="gallery__image__cover"></div>
           </div>
@@ -122,6 +124,7 @@
                 :alt="image.description"
                 :src="`/img/project/${currentProject.path}/${image.name}.jpg`"
                 class="gallery__album__image__item"
+                loading="lazy"
               >
               <div class="gallery__album__image__cover"></div>
             </div>

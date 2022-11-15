@@ -10,6 +10,7 @@
       :alt="name"
       :src="`/img/project/${path}/cover.jpg`"
       class="project-cover__image"
+      loading="lazy"
     />
     <!-- затемнение -->
     <div class="project-cover__overlay"></div>
