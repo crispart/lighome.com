@@ -107,29 +107,6 @@
             <div class="gallery__image__cover"></div>
           </div>
         </Transition>
-        <!-- альбом -->
-        <!-- <Transition name="fade-blur-slow">
-          <div
-            v-if="isHudShown && currentProject.images.length > 1"
-            class="gallery__album"
-          >
-            <div
-              v-for="image in currentProject.images"
-              :key="image.name"
-              :class="{ 'gallery__album__image--active': image.name === selectedImage?.name }"
-              class="gallery__album__image"
-              @click="selectImage(image)"
-            >
-              <img
-                :alt="image.description"
-                :src="`/img/project/${currentProject.path}/${image.name}.jpg`"
-                class="gallery__album__image__item"
-                loading="lazy"
-              >
-              <div class="gallery__album__image__cover"></div>
-            </div>
-          </div>
-        </Transition> -->
       </div>
     </Transition>
   </div>
@@ -416,45 +393,6 @@ watchEffect(() => {
         left: 0;
         top: 0;
         cursor: pointer;
-      }
-    }
-
-    &__album {
-      position: fixed;
-      display: flex;
-      height: 80px;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-
-      &__image {
-        position: relative;
-        height: 80px;
-        width: 80px;
-
-        &__item {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
-
-        &__cover {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          left: 0;
-          top: 0;
-        }
-
-        &:not(&--active) {
-          cursor: pointer;
-          opacity: .6;
-          transition: opacity 250ms ease;
-
-          &:hover { opacity: .9; }
-        }
-
-        &:not(:first-child) { margin-left: 10px; }
       }
     }
   }
