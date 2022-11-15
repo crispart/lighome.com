@@ -8,8 +8,8 @@ const DesignProject: Array<ProjectInterface> = [
   //   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
   // },
   {
-    path: 'emblem',
-    name: 'Emblem',
+    path: 'coat-of-arms',
+    name: 'Coat of arms',
     sphere: 'Logotype',
     description: 'Behind a person is history. The coat of arms may contain visual information about what is behind this story. I have created a coat of arms to decorate things that are dear to my heart. You can order to design your personal or family’s coat of arms.',
     images: [
