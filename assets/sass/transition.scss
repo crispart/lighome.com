@@ -1,7 +1,7 @@
 /* стиль смены страниц */
 
 .page-enter-active,
-.page-leave-active { transition: opacity 300ms ease, filter 300ms ease; }
+.page-leave-active { transition: opacity 250ms ease, filter 250ms ease; }
 
 .page-enter-from,
 .page-leave-to {
