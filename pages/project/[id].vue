@@ -99,7 +99,7 @@
         </Transition>
         <!-- индикатор загрузки -->
         <div
-          v-if="isSpinnerShown"
+          v-show="isSpinnerShown"
           class="gallery__icon-spin"
         >
           <AppIcon
@@ -136,6 +136,8 @@
             width="0"
             @load="isSpinnerShown = false"
             @loadstart="isSpinnerShown = true"
+            @error="isSpinnerShown = false"
+            @abort="isSpinnerShown = false"
           >
         </div>
       </div>
@@ -288,12 +290,12 @@ watchEffect(() => {
     display: flex;
     flex-wrap: wrap;
     width: calc(100% + 10px);
-    margin: -10px -5px;
+    margin: -3px;
 
     &__wrapper {
       position: relative;
       display: flex;
-      padding: 10px 5px;
+      padding: 3px;
 
       @media screen and (max-width: mq.$phone) { width: 100% !important; }
 
@@ -415,9 +417,7 @@ watchEffect(() => {
       transform: translateX(-50%);
       z-index: 0;
 
-      &__item {
-        animation: spin 1000ms linear infinite;
-      }
+      &__item { animation: spin 1000ms linear infinite; }
     }
 
     &__image {
