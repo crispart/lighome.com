@@ -4,28 +4,161 @@ const DesignProject: Array<ProjectInterface> = [
   {
     path: 'coat-of-arms',
     name: 'Coat of arms',
-    sphere: 'Logotype',
+    sphere: 'Logotype · 2022',
     description: 'Behind a person is history. The coat of arms may contain visual information about what is behind this story. I have created a coat of arms to decorate things that are dear to my heart. You can order to design your personal or family’s coat of arms.',
     images: [
       {
         name: 'image-01',
-        description: 'Emblem',
+        description: 'Coat of arms',
         size: 4,
       },
       {
         name: 'image-02',
-        description: 'Emblem',
+        description: 'Coat of arms',
         size: 4,
       },
       {
         name: 'image-03',
-        description: 'Emblem',
+        description: 'Coat of arms',
         size: 4,
       },
       {
         name: 'image-04',
-        description: 'Emblem',
+        description: 'Coat of arms',
         size: 12,
+      },
+    ],
+  },
+  {
+    path: 'she',
+    name: 'She Underwear',
+    sphere: 'Identity · 2022',
+    description: 'Identity for a young bright underwear brand that began its history under the auspices of a bright lifestyle, courage, openness in style. At the same time, the brand is sensual and gentle. I tried to keep this contrast in identity. Enjoy your viewing!',
+    images: [
+      {
+        name: 'image-01',
+        description: 'She Underwear',
+        size: 12,
+      },
+      {
+        name: 'image-02',
+        description: 'She Underwear',
+        size: 6,
+      },
+      {
+        name: 'image-03',
+        description: 'She Underwear',
+        size: 6,
+      },
+      {
+        name: 'image-04',
+        description: 'She Underwear',
+        size: 6,
+      },
+      {
+        name: 'image-05',
+        description: 'She Underwear',
+        size: 6,
+      },
+      {
+        name: 'image-06',
+        description: 'She Underwear',
+        size: 6,
+      },
+      {
+        name: 'image-07',
+        description: 'She Underwear',
+        size: 6,
+      },
+      {
+        name: 'image-08',
+        description: 'She Underwear',
+        size: 6,
+      },
+      {
+        name: 'image-09',
+        description: 'She Underwear',
+        size: 6,
+      },
+      {
+        name: 'image-10',
+        description: 'She Underwear',
+        size: 6,
+      },
+      {
+        name: 'image-11',
+        description: 'She Underwear',
+        size: 6,
+      },
+      {
+        name: 'image-12',
+        description: 'She Underwear',
+        size: 6,
+      },
+      {
+        name: 'image-13',
+        description: 'She Underwear',
+        size: 6,
+      },
+      {
+        name: 'image-14',
+        description: 'She Underwear',
+        size: 6,
+      },
+      {
+        name: 'image-15',
+        description: 'She Underwear',
+        size: 6,
+      },
+      {
+        name: 'image-16',
+        description: 'She Underwear',
+        size: 6,
+      },
+      {
+        name: 'image-17',
+        description: 'She Underwear',
+        size: 6,
+      },
+      {
+        name: 'image-18',
+        description: 'She Underwear',
+        size: 6,
+      },
+      {
+        name: 'image-19',
+        description: 'She Underwear',
+        size: 6,
+      },
+      {
+        name: 'image-20',
+        description: 'She Underwear',
+        size: 6,
+      },
+      {
+        name: 'image-21',
+        description: 'She Underwear',
+        size: 6,
+      },
+      {
+        name: 'image-22',
+        description: 'She Underwear',
+        size: 6,
+      },
+      {
+        name: 'image-23',
+        description: 'She Underwear',
+        size: 6,
+      },
+      {
+        name: 'image-24',
+        description: 'She Underwear',
+        size: 6,
+      },
+      {
+        name: 'image-25',
+        description: 'She Underwear',
+        size: 6,
       },
     ],
   },
