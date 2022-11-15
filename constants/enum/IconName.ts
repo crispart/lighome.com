@@ -6,6 +6,7 @@ const IconName = {
   HEART_FILLED: 'HEART_FILLED',
   INSTAGRAM: 'INSTAGRAM',
   MENU: 'MENU',
+  SPIN: 'SPIN',
   TELEGRAM: 'TELEGRAM',
 } as const;
 

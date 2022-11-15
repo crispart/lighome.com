@@ -58,6 +58,8 @@
             v-if="isHudShown"
             class="gallery__icon-close"
             @click="selectImage(null)"
+            @mouseenter="isHudMouseOver = true"
+            @mouseleave="isHudMouseOver = false"
           >
             <AppIcon
               :name="IconName.CROSS"
@@ -71,6 +73,8 @@
             v-if="isHudShown && currentProject.images.length > 1"
             class="gallery__icon-left"
             @click="selectImage(previousImage)"
+            @mouseenter="isHudMouseOver = true"
+            @mouseleave="isHudMouseOver = false"
           >
             <AppIcon
               :name="IconName.ARROW_LEFT"
@@ -84,6 +88,8 @@
             v-if="isHudShown && currentProject.images.length > 1"
             class="gallery__icon-right"
             @click="selectImage(nextImage)"
+            @mouseenter="isHudMouseOver = true"
+            @mouseleave="isHudMouseOver = false"
           >
             <AppIcon
               :name="IconName.ARROW_RIGHT"
@@ -91,6 +97,16 @@
             />
           </div>
         </Transition>
+        <!-- индикатор загрузки -->
+        <div
+          v-if="isSpinnerShown"
+          class="gallery__icon-spin"
+        >
+          <AppIcon
+            :name="IconName.SPIN"
+            class="gallery__icon-spin__item"
+          />
+        </div>
         <!-- изображение -->
         <Transition name="fade-blur-slow">
           <div
@@ -107,6 +123,21 @@
             <div class="gallery__image__cover"></div>
           </div>
         </Transition>
+        <!-- альбом -->
+        <div v-show="false">
+          <img
+            v-for="image in currentProject.images"
+            :key="image.name"
+            :alt="image.description"
+            :src="`/img/project/${currentProject.path}/full-${image.name}.jpg`"
+            class="gallery__album__image__item"
+            height="0"
+            loading="eager"
+            width="0"
+            @load="isSpinnerShown = false"
+            @loadstart="isSpinnerShown = true"
+          >
+        </div>
       </div>
     </Transition>
   </div>
@@ -183,23 +214,28 @@ const nextImage = computed<ProjectImageInterface>(() => (
   get(currentProject).images[get(nextImageIndex)]),
 );
 
+// управление спиннером
+
+const isSpinnerShown = ref<boolean>(true);
+
 // автоскрытие при бездействии
 
 const isHudShown = ref<boolean>(true);
+const isHudMouseOver = ref<boolean>(false);
 
 const showHudThrottled = useThrottleFn(() => {
   set(isHudShown, true);
 }, 100);
 
-const hideHudDebouncedFn = useDebounceFn(() => {
-  if (get(selectedImage)) {
+const hideHudDebounced = useDebounceFn(() => {
+  if (get(selectedImage) && !get(isHudMouseOver)) {
     set(isHudShown, false);
   }
 }, 2000);
 
 const controlHud = (): void => {
   showHudThrottled();
-  hideHudDebouncedFn();
+  hideHudDebounced();
 };
 
 const selectImage = (image: ProjectImageInterface | null): void => {
@@ -324,7 +360,8 @@ watchEffect(() => {
 
     &__icon-close,
     &__icon-left,
-    &__icon-right {
+    &__icon-right,
+    &__icon-spin {
       position: fixed;
       top: 0;
       padding: 68px 4% 4% 4%;
@@ -347,7 +384,8 @@ watchEffect(() => {
     }
 
     &__icon-left,
-    &__icon-right {
+    &__icon-right,
+    &__icon-spin {
       display: flex;
       align-items: center;
       height: 100%;
@@ -369,6 +407,16 @@ watchEffect(() => {
 
       &:hover {
         ::v-deep(.icon) { transform: translateX(20px); }
+      }
+    }
+
+    &__icon-spin {
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 0;
+
+      &__item {
+        animation: spin 1000ms linear infinite;
       }
     }
 

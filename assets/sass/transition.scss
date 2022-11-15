@@ -38,3 +38,14 @@
   opacity: 0;
   filter: blur(5px);
 }
+
+/* бесконечное вращение */
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
