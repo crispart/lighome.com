@@ -4,9 +4,37 @@ const DesignProject: Array<ProjectInterface> = [
   // {
   //   path: 'urban_trend',
   //   name: 'Urban Trend',
-  //   sphere: 'Logo',
+  //   sphere: 'Identity',
   //   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
   // },
+  {
+    path: 'emblem',
+    name: 'Emblem',
+    sphere: 'Logotype',
+    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    images: [
+      {
+        name: 'image-01',
+        description: 'Emblem',
+        size: 4,
+      },
+      {
+        name: 'image-02',
+        description: 'Emblem',
+        size: 4,
+      },
+      {
+        name: 'image-03',
+        description: 'Emblem',
+        size: 4,
+      },
+      {
+        name: 'image-04',
+        description: 'Emblem',
+        size: 12,
+      },
+    ],
+  },
   {
     path: 'merkaba',
     name: 'Merkaba',
@@ -142,17 +170,17 @@ const DesignProject: Array<ProjectInterface> = [
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
     images: [
       {
-        name: 'image-03',
+        name: 'image-01',
         description: 'Postcard',
         size: 12,
       },
       {
-        name: 'image-01',
+        name: 'image-02',
         description: 'Postcard',
         size: 6,
       },
       {
-        name: 'image-02',
+        name: 'image-03',
         description: 'Postcard',
         size: 6,
       },
@@ -221,7 +249,7 @@ const DesignProject: Array<ProjectInterface> = [
   // {
   //   path: 'trid',
   //   name: 'Trid',
-  //   sphere: 'Logo',
+  //   sphere: 'Logotype',
   //   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
   // },
 ];
