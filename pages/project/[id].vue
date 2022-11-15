@@ -100,7 +100,7 @@
           >
             <img
               :alt="selectedImage?.description"
-              :src="`/img/project/${currentProject.path}/${selectedImage?.name}.jpg`"
+              :src="`/img/project/${currentProject.path}/full-${selectedImage?.name}.jpg`"
               class="gallery__image__item"
               loading="lazy"
             >
