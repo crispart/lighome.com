@@ -11,7 +11,7 @@ const DesignProject: Array<ProjectInterface> = [
     path: 'emblem',
     name: 'Emblem',
     sphere: 'Logotype',
-    description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+    description: 'Behind a person is history. The coat of arms may contain visual information about what is behind this story. I have created a coat of arms to decorate things that are dear to my heart. You can order to design your personal or family’s coat of arms.',
     images: [
       {
         name: 'image-01',
