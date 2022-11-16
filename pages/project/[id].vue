@@ -98,15 +98,17 @@
           </div>
         </Transition>
         <!-- индикатор загрузки -->
-        <div
-          v-show="isSpinnerShown"
-          class="gallery__icon-spin"
-        >
-          <AppIcon
-            :name="IconName.SPIN"
-            class="gallery__icon-spin__item"
-          />
-        </div>
+        <Transition name="fade-blur-slow">
+          <div
+            v-show="isSpinnerShown"
+            class="gallery__icon-spin"
+          >
+            <AppIcon
+              :name="IconName.SPIN"
+              class="gallery__icon-spin__item"
+            />
+          </div>
+        </Transition>
         <!-- изображение -->
         <Transition name="fade-blur-slow">
           <div
@@ -119,25 +121,26 @@
               :src="`/img/project/${currentProject.path}/full-${selectedImage?.name}.jpg`"
               class="gallery__image__item"
               loading="lazy"
+              @abort="isSpinnerShown = false"
+              @error="isSpinnerShown = false"
+              @load="isSpinnerShown = false"
             >
             <div class="gallery__image__cover"></div>
           </div>
         </Transition>
-        <!-- скрытый альбом | todo: найти аналог prefetch, работающий в сафари -->
+        <!-- предзагрузка изображений | todo: найти аналог prefetch, работающий в сафари -->
         <div v-show="false">
+          <!-- предыдущее изображение -->
           <img
-            v-for="image in currentProject.images"
-            :key="image.name"
-            :alt="image.description"
-            :src="`/img/project/${currentProject.path}/full-${image.name}.jpg`"
-            class="gallery__album__image__item"
-            height="0"
+            :alt="previousImage.description"
+            :src="`/img/project/${currentProject.path}/full-${previousImage.name}.jpg`"
             loading="eager"
-            width="0"
-            @abort="isSpinnerShown = false"
-            @error="isSpinnerShown = false"
-            @load="isSpinnerShown = false"
-            @loadstart="isSpinnerShown = true"
+          >
+          <!-- следующее изображение -->
+          <img
+            :alt="nextImage.description"
+            :src="`/img/project/${currentProject.path}/full-${nextImage.name}.jpg`"
+            loading="eager"
           >
         </div>
       </div>
@@ -154,7 +157,7 @@ import ProjectInterface from '~/models/interfaces/ProjectInterface';
 import IconName from '~/constants/enum/IconName';
 import ProjectImageInterface from '~/models/interfaces/ProjectImageInterface';
 import { set } from '@vueuse/shared';
-import { watchEffect } from '@vue/runtime-core';
+import { watch, watchEffect } from '@vue/runtime-core';
 
 const route = useRoute();
 
@@ -216,10 +219,6 @@ const nextImage = computed<ProjectImageInterface>(() => (
   get(currentProject).images[get(nextImageIndex)]),
 );
 
-// управление спиннером
-
-const isSpinnerShown = ref<boolean>(true);
-
 // автоскрытие при бездействии
 
 const isHudShown = ref<boolean>(true);
@@ -260,6 +259,15 @@ watchEffect(() => {
     selectImage(null);
   }
 });
+
+// управление спиннером
+
+const isSpinnerShown = ref<boolean>(true);
+
+watch(
+  () => (get(selectedImage)?.name),
+  () => set(isSpinnerShown, true),
+);
 </script>
 
 <style lang="scss" scoped>
