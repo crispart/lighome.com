@@ -120,7 +120,7 @@
               :alt="selectedImage?.description"
               :src="`/img/project/${currentProject.path}/full-${selectedImage?.name}.jpg`"
               class="gallery__image__item"
-              loading="lazy"
+              loading="eager"
               @abort="isSpinnerShown = false"
               @error="isSpinnerShown = false"
               @load="isSpinnerShown = false"
