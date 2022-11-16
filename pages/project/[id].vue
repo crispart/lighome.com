@@ -266,7 +266,7 @@ const isSpinnerShown = ref<boolean>(true);
 
 watch(
   () => (get(selectedImage)?.name),
-  () => set(isSpinnerShown, true),
+  () => (set(isSpinnerShown, true)),
 );
 </script>
 
