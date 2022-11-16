@@ -123,7 +123,7 @@
             <div class="gallery__image__cover"></div>
           </div>
         </Transition>
-        <!-- альбом -->
+        <!-- скрытый альбом | todo: найти аналог prefetch, работающий в сафари -->
         <div v-show="false">
           <img
             v-for="image in currentProject.images"
@@ -134,10 +134,10 @@
             height="0"
             loading="eager"
             width="0"
+            @abort="isSpinnerShown = false"
+            @error="isSpinnerShown = false"
             @load="isSpinnerShown = false"
             @loadstart="isSpinnerShown = true"
-            @error="isSpinnerShown = false"
-            @abort="isSpinnerShown = false"
           >
         </div>
       </div>
