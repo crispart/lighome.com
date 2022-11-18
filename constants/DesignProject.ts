@@ -416,7 +416,7 @@ const DesignProject: Array<ProjectInterface> = [
       {
         name: 'image-00',
         description: 'Merkaba',
-        size: 6,
+        size: 12,
       },
       {
         name: 'image-01',
@@ -530,6 +530,21 @@ const DesignProject: Array<ProjectInterface> = [
       },
       {
         name: 'image-23',
+        description: 'Merkaba',
+        size: 6,
+      },
+      {
+        name: 'image-24',
+        description: 'Merkaba',
+        size: 6,
+      },
+      {
+        name: 'image-25',
+        description: 'Merkaba',
+        size: 6,
+      },
+      {
+        name: 'image-26',
         description: 'Merkaba',
         size: 6,
       },
