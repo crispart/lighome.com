@@ -20,7 +20,10 @@
           class="showcase__wrapper__image"
           loading="lazy"
         >
-        <div class="showcase__wrapper__cover"></div>
+        <div
+          :class="{'showcase__wrapper__cover--masked': image.hasMask}"
+          class="showcase__wrapper__cover"
+        ></div>
       </div>
     </div>
     <!-- другие проекты -->
@@ -316,11 +319,13 @@ watch(
 
       &__cover {
         position: absolute;
-        width: calc(100% - 10px);
-        height: calc(100% - 20px);
-        left: 5px;
-        top: 10px;
+        width: calc(100% - 6px);
+        height: calc(100% - 6px);
+        left: 3px;
+        top: 3px;
         cursor: zoom-in;
+
+        &--masked { background-color: palette.$app-primary-alpha }
       }
     }
   }
