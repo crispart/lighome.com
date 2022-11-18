@@ -31,11 +31,13 @@
           :name="previousProject.name"
           :path="previousProject.path"
           :sphere="previousProject.sphere"
+          :year="previousProject.year"
         />
         <ProjectCover
           :name="nextProject.name"
           :path="nextProject.path"
           :sphere="nextProject.sphere"
+          :year="nextProject.year"
         />
       </div>
     </div>

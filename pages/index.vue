@@ -6,6 +6,7 @@
       :name="project.name"
       :path="project.path"
       :sphere="project.sphere"
+      :year="project.year"
       class="portfolio__project"
     />
   </div>

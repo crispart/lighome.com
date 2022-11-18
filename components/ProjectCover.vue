@@ -21,7 +21,7 @@
         class="project-cover__description"
       >
         <p class="project-cover__description__name">{{ name }}</p>
-        <p class="project-cover__description__year">{{ sphere }}</p>
+        <p class="project-cover__description__year">{{ sphere }} · {{ year }}</p>
       </div>
     </Transition>
   </NuxtLink>
@@ -29,11 +29,13 @@
 
 <script lang="ts" setup>
 import { ref } from '@vue/reactivity';
+import ProjectSphere from '~/constants/enum/ProjectSphere';
 
 defineProps<{
   path: string,
   name: string,
-  sphere: string;
+  sphere: ProjectSphere;
+  year: number;
 }>();
 
 const isDescriptionShown = ref<boolean>(false);
