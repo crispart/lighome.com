@@ -302,15 +302,23 @@ watch(
   .showcase {
     display: flex;
     flex-wrap: wrap;
-    width: calc(100% + 10px);
+    width: calc(100% + 6px);
     margin: -3px;
+
+    @media screen and (max-width: mq.$phone) {
+      width: 100%;
+      margin: 0;
+    }
 
     &__wrapper {
       position: relative;
       display: flex;
       padding: 3px;
 
-      @media screen and (max-width: mq.$phone) { width: 100% !important; }
+      @media screen and (max-width: mq.$phone) {
+        width: 100% !important;
+        padding: 3px 0;
+      }
 
       &__image {
         object-fit: cover;
