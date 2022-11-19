@@ -29,6 +29,7 @@
             :key="route.path"
             :to="route.path"
             class="menu__overlay__route__item"
+            @click="isOverlayVisible = false"
           >
             {{ route.label }}
           </NuxtLink>
