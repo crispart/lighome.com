@@ -63,6 +63,8 @@ const isDescriptionShown = ref<boolean>(false);
     transition: opacity 250ms ease;
 
     &:hover { opacity: .9; }
+
+    @media (hover: none) and (pointer: coarse) { display: none }
   }
 
   &__description {
@@ -75,6 +77,8 @@ const isDescriptionShown = ref<boolean>(false);
     width: 100%;
     top: 0;
     pointer-events: none;
+
+    @media (hover: none) and (pointer: coarse) { display: none }
 
     &__name {
       margin: 0;
