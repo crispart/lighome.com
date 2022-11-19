@@ -92,7 +92,7 @@ watch(
     width: 100%;
     left: 0;
     top: 0;
-    padding: 65px 4% 4% 4%;
+    padding: 65px 4%;
     z-index: 1;
     background-color: palette.$app-secondary;
 
