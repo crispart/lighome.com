@@ -63,6 +63,7 @@
       <div
         v-if="selectedImage"
         ref="galleryElement"
+        v-overflow
         class="gallery"
         @mousemove="controlHud"
       >
@@ -170,7 +171,7 @@
 <script lang="ts" setup>
 import { useRoute } from '#app';
 import { computed, ref } from '@vue/reactivity';
-import { get, useDebounceFn, useMagicKeys, useThrottleFn } from '@vueuse/core';
+import { get, useDebounceFn, useMagicKeys, useSwipe, useThrottleFn } from '@vueuse/core';
 import DesignProject from '~/constants/DesignProject';
 import ProjectInterface from '~/models/interfaces/ProjectInterface';
 import IconName from '~/constants/enum/IconName';
@@ -178,8 +179,16 @@ import ProjectGridItemInterface from '~/models/interfaces/ProjectGridItemInterfa
 import { set } from '@vueuse/shared';
 import { watch, watchEffect } from '@vue/runtime-core';
 import ProjectGridItemType from '~/constants/enum/ProjectGridItemType';
+import SwipeDirection from '~/constants/enum/SwipeDirection';
 
 const route = useRoute();
+
+// директива для скрытия полос прокрутки
+
+const vOverflow = {
+  mounted: () => (document.documentElement.style.overflow = 'hidden'),
+  unmounted: () => (document.documentElement.style.overflow = 'auto'),
+};
 
 // текущий проект
 
@@ -286,6 +295,26 @@ watchEffect(() => {
     selectGridItem(null);
   }
 });
+
+// обработка тач-эвентов
+
+const galleryElement = ref<HTMLDivElement | null>(null);
+
+const { isSwiping, direction: swipeDirection } = useSwipe(galleryElement);
+
+watch(
+  () => (get(isSwiping)),
+  () => {
+    if (!get(isSwiping)) {
+      return;
+    }
+    if (get(swipeDirection) === SwipeDirection.LEFT) {
+      selectGridItem(get(previousImage));
+    } else if (get(swipeDirection) === SwipeDirection.RIGHT) {
+      selectGridItem(get(nextImage));
+    }
+  },
+);
 
 // управление спиннером
 
@@ -396,8 +425,6 @@ watch(
     left: 0;
     user-select: none;
 
-    @media (hover: none) and (pointer: coarse) { display: none }
-
     &__overlay {
       position: fixed;
       height: 100%;
@@ -442,6 +469,11 @@ watch(
       z-index: 1;
 
       &__item { transition: transform 250ms ease; }
+    }
+
+    &__icon-left,
+    &__icon-right {
+      @media (hover: none) and (pointer: coarse) { display: none }
     }
 
     &__icon-left {
