@@ -1,4 +1,4 @@
-import ProjectImageInterface from '~/models/interfaces/ProjectImageInterface';
+import ProjectGridItemInterface from '~/models/interfaces/ProjectGridItemInterface';
 import ProjectSphere from '~/constants/enum/ProjectSphere';
 
 export default interface ProjectInterface {
@@ -7,5 +7,5 @@ export default interface ProjectInterface {
   sphere: ProjectSphere;
   year: number;
   description: string;
-  images: Array<ProjectImageInterface>;
+  grid: Array<ProjectGridItemInterface>;
 }

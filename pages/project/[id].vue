@@ -8,22 +8,36 @@
     <!-- сетка -->
     <div class="showcase">
       <div
-        v-for="image in currentProject.images"
-        :key="image.name"
-        :style="{ width: `${100 / 12 * image.size}%` }"
+        v-for="gridItem in currentProject.grid"
+        :key="gridItem.name"
+        :style="{ width: `${100 / 12 * gridItem.size}%` }"
         class="showcase__wrapper"
-        @click="selectImage(image)"
+        @click="selectGridItem(gridItem.type === ProjectGridItemType.IMAGE ? gridItem : null)"
       >
+        <!-- изображение -->
         <img
-          :alt="image.description"
-          :src="`/img/project/${currentProject.path}/${image.name}.jpg`"
+          v-if="gridItem.type !== ProjectGridItemType.VIDEO"
+          :alt="gridItem.description"
+          :src="`/img/project/${currentProject.path}/${gridItem.name}.jpg`"
           class="showcase__wrapper__image"
           loading="lazy"
         >
         <div
-          :class="{'showcase__wrapper__cover--masked': image.hasMask}"
+          :class="{'showcase__wrapper__cover--masked': gridItem.hasMask}"
           class="showcase__wrapper__cover"
         ></div>
+        <!-- видео -->
+        <video
+          v-if="gridItem.type === ProjectGridItemType.VIDEO"
+          :src="`/img/project/${currentProject.path}/${gridItem.name}.mp4`"
+          class="showcase__wrapper__video"
+          controls
+          controlslist="nodownload"
+          disablepictureinpicture
+          playsinline
+        >
+          Sorry, your browser doesn't support embedded videos.
+        </video>
       </div>
     </div>
     <!-- другие проекты -->
@@ -55,14 +69,14 @@
         <!-- оверлей -->
         <div
           class="gallery__overlay"
-          @click="selectImage(null)"
+          @click="selectGridItem(null)"
         ></div>
         <!-- триггер закрытия -->
         <Transition name="fade-blur-slow">
           <div
             v-if="isHudShown"
             class="gallery__icon-close"
-            @click="selectImage(null)"
+            @click="selectGridItem(null)"
             @mouseenter="isHudMouseOver = true"
             @mouseleave="isHudMouseOver = false"
           >
@@ -75,9 +89,9 @@
         <!-- стрелка влево -->
         <Transition name="fade-blur-slow">
           <div
-            v-if="isHudShown && currentProject.images.length > 1"
+            v-if="isHudShown && currentProjectImages.length > 1"
             class="gallery__icon-left"
-            @click="selectImage(previousImage)"
+            @click="selectGridItem(previousImage)"
             @mouseenter="isHudMouseOver = true"
             @mouseleave="isHudMouseOver = false"
           >
@@ -90,9 +104,9 @@
         <!-- стрелка вправо -->
         <Transition name="fade-blur-slow">
           <div
-            v-if="isHudShown && currentProject.images.length > 1"
+            v-if="isHudShown && currentProjectImages.length > 1"
             class="gallery__icon-right"
-            @click="selectImage(nextImage)"
+            @click="selectGridItem(nextImage)"
             @mouseenter="isHudMouseOver = true"
             @mouseleave="isHudMouseOver = false"
           >
@@ -119,7 +133,7 @@
           <div
             :key="selectedImage?.name"
             class="gallery__image"
-            @click="selectImage(null)"
+            @click="selectGridItem(null)"
           >
             <img
               :alt="selectedImage?.description"
@@ -160,9 +174,10 @@ import { get, useDebounceFn, useMagicKeys, useThrottleFn } from '@vueuse/core';
 import DesignProject from '~/constants/DesignProject';
 import ProjectInterface from '~/models/interfaces/ProjectInterface';
 import IconName from '~/constants/enum/IconName';
-import ProjectImageInterface from '~/models/interfaces/ProjectImageInterface';
+import ProjectGridItemInterface from '~/models/interfaces/ProjectGridItemInterface';
 import { set } from '@vueuse/shared';
 import { watch, watchEffect } from '@vue/runtime-core';
+import ProjectGridItemType from '~/constants/enum/ProjectGridItemType';
 
 const route = useRoute();
 
@@ -197,11 +212,15 @@ const nextProject = computed<ProjectInterface>(() => (DesignProject[get(nextProj
 
 // галерея изображений
 
-const selectedImage = ref<ProjectImageInterface | null>(null);
+const currentProjectImages = computed<Array<ProjectGridItemInterface>>(() => {
+  return get(currentProject).grid.filter(({ type }) => (type === ProjectGridItemType.IMAGE));
+});
+
+const selectedImage = ref<ProjectGridItemInterface | null>(null);
 
 const selectedImageIndex = computed<number>(() => {
-  for (let i = 0; i < get(currentProject).images.length; i++) {
-    if (get(currentProject).images[i].name === get(selectedImage)?.name) {
+  for (let i = 0; i < get(currentProjectImages).length; i++) {
+    if (get(currentProjectImages)[i].name === get(selectedImage)?.name) {
       return i;
     }
   }
@@ -209,19 +228,19 @@ const selectedImageIndex = computed<number>(() => {
 });
 
 const previousImageIndex = computed<number>(() => (
-  get(selectedImageIndex) === 0 ? get(currentProject).images.length - 1 : get(selectedImageIndex) - 1
+  get(selectedImageIndex) === 0 ? get(currentProjectImages).length - 1 : get(selectedImageIndex) - 1
 ));
 
 const nextImageIndex = computed<number>(() => (
-  get(selectedImageIndex) === get(currentProject).images.length - 1 ? 0 : get(selectedImageIndex) + 1
+  get(selectedImageIndex) === get(currentProjectImages).length - 1 ? 0 : get(selectedImageIndex) + 1
 ));
 
-const previousImage = computed<ProjectImageInterface>(() => (
-  get(currentProject).images[get(previousImageIndex)]),
+const previousImage = computed<ProjectGridItemInterface>(() => (
+  get(currentProjectImages)[get(previousImageIndex)]),
 );
 
-const nextImage = computed<ProjectImageInterface>(() => (
-  get(currentProject).images[get(nextImageIndex)]),
+const nextImage = computed<ProjectGridItemInterface>(() => (
+  get(currentProjectImages)[get(nextImageIndex)]),
 );
 
 // автоскрытие при бездействии
@@ -244,8 +263,11 @@ const controlHud = (): void => {
   hideHudDebounced();
 };
 
-const selectImage = (image: ProjectImageInterface | null): void => {
-  set(selectedImage, image);
+const selectGridItem = (gridItem: ProjectGridItemInterface | null): void => {
+  if (gridItem?.type === ProjectGridItemType.VIDEO) {
+    return;
+  }
+  set(selectedImage, gridItem);
   controlHud();
 };
 
@@ -255,13 +277,13 @@ const { arrowLeft, arrowRight, escape } = useMagicKeys();
 
 watchEffect(() => {
   if (get(arrowLeft)) {
-    selectImage(get(previousImage));
+    selectGridItem(get(previousImage));
   }
   if (get(arrowRight)) {
-    selectImage(get(nextImage));
+    selectGridItem(get(nextImage));
   }
   if (get(escape)) {
-    selectImage(null);
+    selectGridItem(null);
   }
 });
 
@@ -320,10 +342,13 @@ watch(
         padding: 3px 0;
       }
 
-      &__image {
+      &__image,
+      &__video {
         object-fit: cover;
         width: 100%;
       }
+
+      &__video { cursor: pointer; }
 
       &__cover {
         position: absolute;
