@@ -309,9 +309,9 @@ watch(
       return;
     }
     if (get(swipeDirection) === SwipeDirection.LEFT) {
-      selectGridItem(get(previousImage));
-    } else if (get(swipeDirection) === SwipeDirection.RIGHT) {
       selectGridItem(get(nextImage));
+    } else if (get(swipeDirection) === SwipeDirection.RIGHT) {
+      selectGridItem(get(previousImage));
     }
   },
 );
