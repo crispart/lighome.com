@@ -149,11 +149,30 @@ if (route.query.focus === 'form') {
     height: calc(80vh - 160px);
     min-height: 240px;
     max-height: 480px;
+    // фикс отображения видео в сафари
+    width: 100%;
+    background-image: url("@/assets/img/about-poster.jpg");
+    background-size: cover;
+    background-position: center;
+    -webkit-transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -webkit-perspective: 1000;
+    // /фикс отображения видео в сафари
 
     &__image {
       height: 100%;
       width: 100%;
       object-fit: cover;
+      // фикс отображения видео в сафари
+      background-image: url("@/assets/img/about-poster.jpg");
+      background-size: cover;
+      background-position: center;
+      -webkit-transform-style: preserve-3d;
+      -webkit-backface-visibility: hidden;
+      -webkit-transform: translate3d(0, 0, 0);
+      -webkit-perspective: 1000;
+      // /фикс отображения видео в сафари
     }
 
     &__label {
