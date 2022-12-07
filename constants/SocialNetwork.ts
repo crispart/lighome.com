@@ -10,6 +10,10 @@ const SocialNetwork: Array<SocialInterface> = [
     url: 'https://t.me/green_jade',
     icon: IconName.TELEGRAM,
   },
+  {
+    url: 'mailto:ligreenjade@gmail.com',
+    icon: IconName.MAIL,
+  },
 ];
 
 export default SocialNetwork;
