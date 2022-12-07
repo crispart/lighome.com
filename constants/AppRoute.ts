@@ -6,7 +6,7 @@ const AppRoute: Array<RouteInterface> = [
     label: 'Portfolio',
   },
   {
-    path: '/about',
+    path: '/about/',
     label: 'About & contact',
   },
 ];

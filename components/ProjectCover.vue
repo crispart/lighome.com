@@ -1,6 +1,6 @@
 <template>
   <NuxtLink
-    :to="`/project/${path}`"
+    :to="`/project/${path}/`"
     class="project-cover"
     @mouseenter="isDescriptionShown = true"
     @mouseleave="isDescriptionShown = false"

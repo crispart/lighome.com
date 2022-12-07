@@ -4,7 +4,7 @@
     <NuxtLink
       v-if="route.name !== 'about'"
       class="footer__link"
-      to="/about?focus=form"
+      to="/about/?focus=form"
     >
       <span class="footer__link__label">Order&nbsp;</span>
       <AppIcon
