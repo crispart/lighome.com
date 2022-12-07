@@ -33,7 +33,7 @@
         :href="social.url"
         :title="social.icon"
         class="navbar__social__link"
-        target="_blank"
+        :target="`_${social.target === TargetTab.BLANK ? 'blank' : 'self'}`"
       >
         <AppIcon :name="social.icon"/>
       </a>
@@ -47,6 +47,7 @@
 import AppRoute from '~/constants/AppRoute';
 import SocialNetwork from '@/constants/SocialNetwork';
 import { useRoute } from '#app';
+import TargetTab from '~/constants/enum/TargetTab';
 
 const route = useRoute();
 </script>

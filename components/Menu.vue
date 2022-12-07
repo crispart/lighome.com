@@ -42,7 +42,7 @@
             :href="social.url"
             :title="social.icon"
             class="menu__overlay__social__link"
-            target="_blank"
+            :target="`_${social.target === TargetTab.BLANK ? 'blank' : 'self'}`"
           >
             <AppIcon
               :name="social.icon"
@@ -63,6 +63,7 @@ import { set } from '@vueuse/shared';
 import IconName from '@/constants/enum/IconName';
 import AppRoute from '~/constants/AppRoute';
 import SocialNetwork from '@/constants/SocialNetwork';
+import TargetTab from '~/constants/enum/TargetTab';
 
 const route = useRoute();
 
